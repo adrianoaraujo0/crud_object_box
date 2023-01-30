@@ -28,11 +28,6 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), 
     );
   }
 
@@ -48,7 +43,6 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
           }),
         border: const OutlineInputBorder()
       ),
-      
     );
   }
 
@@ -88,7 +82,13 @@ class _ListaTarefasPageState extends State<ListaTarefasPage> {
             children: [
               Icon(Icons.circle, color: Colors.grey[400]),
               const SizedBox(width: 10),
-              Text(listaTarefasController.encontrarTarefa()[index].nome, style: const TextStyle(fontSize: 25)),
+              Expanded(child: Text(listaTarefasController.encontrarTarefa()[index].nome, style: const TextStyle(fontSize: 25))),
+              IconButton(
+                icon: const Icon(Icons.delete),
+                color: Colors.red[400],
+                onPressed: () => setState(() => listaTarefasController.deletarTarefa( listaTarefasController.encontrarTarefa()[index]))
+              ),
+
             ],
           ),
           const SizedBox(height: 5),
